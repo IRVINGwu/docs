@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Flask构建后端接口 | covid-19-app 文档</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.52bb2005.css" as="style"><link rel="preload" href="/docs/assets/js/app.b0a15833.js" as="script"><link rel="preload" href="/docs/assets/js/2.18927d2b.js" as="script"><link rel="preload" href="/docs/assets/js/9.c23fac6c.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.5c238dfe.js"><link rel="prefetch" href="/docs/assets/js/11.2da91d8e.js"><link rel="prefetch" href="/docs/assets/js/12.16979dbe.js"><link rel="prefetch" href="/docs/assets/js/13.7f94e9c0.js"><link rel="prefetch" href="/docs/assets/js/14.5123bec2.js"><link rel="prefetch" href="/docs/assets/js/15.16ae75a4.js"><link rel="prefetch" href="/docs/assets/js/16.5a145cd8.js"><link rel="prefetch" href="/docs/assets/js/17.d9f7e318.js"><link rel="prefetch" href="/docs/assets/js/18.ae462d82.js"><link rel="prefetch" href="/docs/assets/js/3.9c229156.js"><link rel="prefetch" href="/docs/assets/js/4.e05c873c.js"><link rel="prefetch" href="/docs/assets/js/5.f3e6ed41.js"><link rel="prefetch" href="/docs/assets/js/6.498ab014.js"><link rel="prefetch" href="/docs/assets/js/7.3f5168c2.js"><link rel="prefetch" href="/docs/assets/js/8.4cd0f27c.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.52bb2005.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">covid-19-app 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/docs/python/" class="nav-link router-link-active">
+  Python
+</a></div><div class="nav-item"><a href="/docs/vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/docs/ts/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目地址啊" class="dropdown-title"><span class="title">项目地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="项目地址啊" class="mobile-dropdown-title"><span class="title">项目地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-project" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue2.x项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV3" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV2" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0+TypeScript项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/docs/python/" class="nav-link router-link-active">
+  Python
+</a></div><div class="nav-item"><a href="/docs/vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/docs/ts/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目地址啊" class="dropdown-title"><span class="title">项目地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="项目地址啊" class="mobile-dropdown-title"><span class="title">项目地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-project" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue2.x项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV3" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV2" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0+TypeScript项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/docs/" aria-current="page" class="sidebar-link">Home</a></li><li><a href="/docs/python/python01.html" aria-current="page" class="active sidebar-link">Flask构建后端接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/python/python01.html#说明" class="sidebar-link">说明</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_1-在flask的html页面中引入vue" class="sidebar-link">1. 在flask的html页面中引入Vue</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_2-前后端分离项目如何启动" class="sidebar-link">2.前后端分离项目如何启动</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_3-flask端如何做" class="sidebar-link">3.flask端如何做</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_4-vue端如何做" class="sidebar-link">4.Vue端如何做</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_5-数据接口" class="sidebar-link">5.数据接口</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_6-app-py文件怎么设计" class="sidebar-link">6.app.py文件怎么设计</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_7-为什么数据传输以json为主" class="sidebar-link">7.为什么数据传输以json为主？</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_8-什么叫restful-api" class="sidebar-link">8.什么叫RESTful API</a></li><li class="sidebar-sub-header"><a href="/docs/python/python01.html#_9-get和post详解" class="sidebar-link">9.GET和POST详解</a></li></ul></li><li><a href="/docs/python/python02.html" class="sidebar-link">Python进行数据处理</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="flask构建后端接口"><a href="#flask构建后端接口" class="header-anchor">#</a> Flask构建后端接口</h1> <h2 id="说明"><a href="#说明" class="header-anchor">#</a> 说明</h2> <p>我为什么一直想将flask和Vue结合起来？因为前端项目中，Vue的组件切换很给力，不管是移动端还是PC端，都可以做出非常丰富的内容，而且可以进行丰富的用户交互，这给了我很多的创意空间。</p> <p>而flask的前端表现不是很好，需要给出明显的路由才能进行跳转（通过<code>&lt;a&gt;&lt;/a&gt;</code>标签来进行跳转），不符合SPA的规则；而且用户交互也不是很好，比如说我要操作表格，增删改查就需要很多JS代码，这就太麻烦了。</p> <p>我也尝试过在flask项目的html文件中引入Vue，是可以使用，但是很明显，不能使用<code>.vue</code>的文件，也就是不能使用vue组件，这样就相当于是一种简化版的JS代码，没起什么作用，所以我在网上搜索了一下，是否可以将flask和Vue结合起来，这样就免得我另外学习<code>node.js</code>了（虽然最后免不了还是要学），但是我觉得flask构建简单网站是有优势的：简单、快速。这样对于我来说的话就很有用。</p> <h2 id="_1-在flask的html页面中引入vue"><a href="#_1-在flask的html页面中引入vue" class="header-anchor">#</a> 1. 在flask的html页面中引入Vue</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 这是 main.html 文件，和普通使用Vue的html文件一样，唯一不同的是插值表达式不能用了，因为flask项目中定义了{{}}为自己在html页面上传递数据的方式 --&gt;</span>
+
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>width=device-width, initial-scale=1.0<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://cdn.jsdelivr.net/npm/vue/dist/vue.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text/javascript<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">let</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      el<span class="token operator">:</span> <span class="token string">&quot;#app&quot;</span><span class="token punctuation">,</span>
+      data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        msg<span class="token operator">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 在app.py文件中</span>
+
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token comment"># 根目录返回index.html</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello_world</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span>
+        <span class="token string">'index.html'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+
+<span class="token comment"># /main 根目录下的main，返回main.html</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/main'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello_world2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span>
+        <span class="token string">'main.html'</span>
+    <span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre></div><p>可以看到，在app.py文件中，定义了不同的路由地址，然后返回不同的html页面，这样就做到了页面的切换。但并不能做到Vue路由的切换。那么flask和Vue分别作为后端和前端，如何分离呢？</p> <h2 id="_2-前后端分离项目如何启动"><a href="#_2-前后端分离项目如何启动" class="header-anchor">#</a> 2.前后端分离项目如何启动</h2> <ol><li><p>下载此项目。</p></li> <li><p>命令行中打开项目的<code>back_end</code>文件夹，安装<code>requirements.txt</code>文件中的第三方包，运行<code>app.py</code>文件。</p> <div class="language-sh extra-class"><pre class="language-sh"><code>$ <span class="token builtin class-name">cd</span> back_end
+$ python3.9 -m venv <span class="token function">env</span>
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span>$ pip <span class="token function">install</span> -r requirements.txt
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span>$ python app.py
+</code></pre></div><p>后端接口为： http://localhost:8080</p> <p>提示：若想在手机浏览器中浏览项目，需将<code>app.py</code>文件中的<code>localhost</code>地址改为本地的<code>IPv4</code>地址。</p></li> <li><p>在另外一个命令行中打开<code>front_end</code>文件夹，安装第三方包，并运行。</p> <div class="language-sh extra-class"><pre class="language-sh"><code>$ <span class="token builtin class-name">cd</span> front_end
+$ <span class="token function">npm</span> <span class="token function">install</span>
+$ <span class="token function">npm</span> run serve
+</code></pre></div><p>前端网址为： http://localhost:8999。由于本项目是移动端项目，在桌面端打开时，打开调试窗口的手机窗口查看效果更好。</p> <p>提示：若想在手机浏览器中浏览项目，需将<code>vue.config.js</code>和<code>src/service/http.ts</code>文件中的<code>localhost</code>地址改为本地的<code>IPv4</code>地址。</p></li></ol> <h2 id="_3-flask端如何做"><a href="#_3-flask端如何做" class="header-anchor">#</a> 3.flask端如何做</h2> <h3 id="_3-1-安装flask-cors扩展"><a href="#_3-1-安装flask-cors扩展" class="header-anchor">#</a> 3.1 安装Flask-Cors扩展</h3> <p><code>pip install Flask-Cors</code>，flask-cors的官网：<code>https://flask-cors.readthedocs.io/en/latest/</code>。</p> <p>为什么要安装Flask-Cors扩展？</p> <p>是为了发出跨域请求。比如，来自不同协议，IP地址，域名或端口的请求——而Flask-CORS可以帮我们处理这些。</p> <blockquote><p>需要注意的是，虽然上面的设置允许所有路由上的跨域请求（来自任何域、协议或端口）。但在生产环境中，您应该只允许来自托管前端应用程序的域的跨域请求。有关此问题的更多信息，请参阅<a href="https://link.zhihu.com/?target=http%3A//flask-cors.readthedocs.io/" target="_blank" rel="noopener noreferrer">Flask-CORS文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p></blockquote> <h3 id="_3-2-创建app-py文件"><a href="#_3-2-创建app-py文件" class="header-anchor">#</a> 3.2 创建<code>app.py</code>文件</h3> <p>使用pycharm创建flask项目时，会生成很多文件夹，其实真正需要的文件只有一个，那就是<code>app.py</code>文件，所以可以直接在flask项目的文件夹下，创建一个名为<code>app.py</code>的文件，里面放如下代码：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> jsonify
+<span class="token keyword">from</span> flask_cors <span class="token keyword">import</span> CORS
+
+
+<span class="token comment"># 可以热更新</span>
+DEBUG <span class="token operator">=</span> <span class="token boolean">True</span>
+
+<span class="token comment"># 实例化 app</span>
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>from_object<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token comment"># 开通 CORS</span>
+CORS<span class="token punctuation">(</span>app<span class="token punctuation">,</span> resources<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">r'/*'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'origins'</span><span class="token punctuation">:</span> <span class="token string">'*'</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 完整性检查 route，这里路由的地址是 http://localhost:5000/ping ，我的localhost设置的是127.0.0.1，所以地址就是http://127.0.0.1:5000/ping</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/ping'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">ping_pong</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token string">'pong!'</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>上述代码有两个地方比较重要：</p> <ol><li><code>@app.route('/ping', methods=['GET'])</code>，这句代码规定了前端请求数据的地址为：<code>http://127.0.0.1:5000/ping</code>，我还可以设置很多路由，通过路由地址的不同，来返回不同的数据。<code>methods=['GET']</code>，用来指定这个地址的方法，可以用来对后端请求数据。</li> <li><code>jsonify('pong!')</code>，为什么返回值要写成json格式？因为前端接收的数据一般用对象来接收，写成json格式是为了方便前端处理数据。当然，这也不可能硬性要求是json数据，可以在明确数据类型的情况下，写成别的类型的数据。自己或者对方知道怎么处理就行了。</li></ol> <h2 id="_4-vue端如何做"><a href="#_4-vue端如何做" class="header-anchor">#</a> 4.<code>Vue</code>端如何做</h2> <p>vue端还是用vue-cli来创建一个项目，需要用到axios，在创建过程中选择安装axios即可。下面以创建最简单的.vue文件来说明。</p> <h3 id="_4-1-创建ping-vue文件"><a href="#_4-1-创建ping-vue文件" class="header-anchor">#</a> 4.1 创建<code>Ping.vue</code>文件</h3> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Ping'</span><span class="token punctuation">,</span>   <span class="token comment">//name是这个vue文件的别名，应该可以取消，试一试</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      msg<span class="token operator">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="_4-2-创建router-js文件-创建全局路由组件"><a href="#_4-2-创建router-js文件-创建全局路由组件" class="header-anchor">#</a> 4.2 创建<code>router.js</code>文件，创建全局路由组件</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'vue-router'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 从单个的vue文件中导入组件</span>
+<span class="token keyword">import</span> Ping <span class="token keyword">from</span> <span class="token string">'./components/Ping.vue'</span><span class="token punctuation">;</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  mode<span class="token operator">:</span> <span class="token string">'history'</span><span class="token punctuation">,</span>    <span class="token comment">// 去掉路由地址的# ，因为在这里我们不需要#</span>
+    
+  base<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">BASE_URL</span><span class="token punctuation">,</span>   <span class="token comment">//base代表着是基本的路由请求的路径，BASE_URL 会和 vue.config.js 中的 publicPath 选项相符，即你的应用会部署到的基础路径。process.env 表示进程环境，可以设置为production或developing。Vue Cli 3生成的项目结构，没有build、config目录，而是使用vue.config.js来进行配置。vue.config.js 是一个可选的配置文件，如果项目的 (和 package.json 同级的) 根目录中存在这个文件，那么它会被 @vue/cli-service 自动加载。你也可以使用 package.json 中的 vue 字段，但是注意这种写法需要你严格遵照 JSON 的格式来写。 https://www.cnblogs.com/sea-breeze/p/11310856.html</span>
+    
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      path<span class="token operator">:</span> <span class="token string">'/ping'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'Ping'</span><span class="token punctuation">,</span>    <span class="token comment">//那么是vue文件的别名，应该可以取消，试一试。</span>
+      component<span class="token operator">:</span> Ping<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_4-3在app-vue文件中-使用子组件"><a href="#_4-3在app-vue文件中-使用子组件" class="header-anchor">#</a> 4.3在<code>App.vue</code>文件中，使用子组件</h3> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/ping<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这时候就可以用浏览器登录<code>http://localhost:8080/ping</code>来想看前端页面了。<em>注意：这里的8080不一定是我的路由地址，具体还要看项目中是什么。</em></p> <h2 id="_5-数据接口"><a href="#_5-数据接口" class="header-anchor">#</a> 5.数据接口</h2> <p>使用<code>axios</code>来获取数据，在ping.vue文件中，修改<code>&lt;script&gt;</code>里面的代码：</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token comment">// 引入axios</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Ping'</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      msg<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token string">'http://localhost:5000/ping'</span><span class="token punctuation">;</span><span class="token comment">//这里的/ping应该只是为了和后端保持一致，不是硬性要求</span>
+      axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>    <span class="token comment">//axios的用法没有变</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// eslint-disable-next-line</span>
+          console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>可以在全局的js文件中，设置axios的请求地址前缀，这样就方便我们，不用一直写完整的路由地址：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">&quot;axios&quot;</span><span class="token punctuation">;</span>
+<span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$http <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token operator">:</span> <span class="token string">&quot;http://localhost:8080&quot;</span><span class="token punctuation">,</span> <span class="token comment">//在全局设置 axios 的请求根路径，这样，在发起请求的时候，就可以不写根路径了，具体根路径还要看你的设置</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_6-app-py文件怎么设计"><a href="#_6-app-py文件怎么设计" class="header-anchor">#</a> 6.<code>app.py</code>文件怎么设计</h2> <p>如果我们请求的数据很多，那岂不是要在app.py文件中写很多代码，那么这个文件用起来就不是很方便了，很难进行维护。可以这样做，充分发挥Python模块化的精髓，把每一个重要模块写成<code>.py</code>文件，然后在<code>app.py</code>文件中导入使用即可。</p> <p>数据也可能有很多，那么我可以创建很多<code>.json</code>文件，使用Python的<code>json</code>库，来处理这些文件。可能还要涉及到json与其余数据类型之间的转换。</p> <h2 id="_7-为什么数据传输以json为主"><a href="#_7-为什么数据传输以json为主" class="header-anchor">#</a> 7.为什么数据传输以<code>json</code>为主？</h2> <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯(包括C、C++、Java、JavaScript、Perl、Python等)。这些特性使JSON成为理想的数据交换语言。易于人阅读和编写，同时也易于机器解析和生成(一般用于提升网络传输速率)。</p> <p>pandas本身就为我们考虑到了转换为json格式的问题。</p> <h2 id="_8-什么叫restful-api"><a href="#_8-什么叫restful-api" class="header-anchor">#</a> 8.什么叫<code>RESTful API</code></h2> <p>rest的全称是Representational State Transfer，2000年由Roy Fielding发表在他的博士论文中，首次提出了Restful的概念。Restful 做为一种接口的设计规则，基于HTTP协议 ，可以使用XML格式 或JSON格式传输数据。对于使用restful 这套规则定义开发的接口，我们称之为Restful API。
+关于Restful的具体表现形式，简单可以用一句话概括：URL定位资源，使用HTTP请求（GET、POST、PUT、DELETE等）对资源进行操作。</p> <blockquote><p>HTTP 动词</p> <ul><li>GET: 获取资源</li> <li>POST：创建或更新资源</li> <li>PUT: 创建或更新资源</li> <li>DELETE：删除资源</li> <li>HEAD：获取资源的元数据，不常用</li> <li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的， 不常用</li></ul></blockquote> <h2 id="_9-get和post详解"><a href="#_9-get和post详解" class="header-anchor">#</a> 9.<code>GET</code>和<code>POST</code>详解</h2> <blockquote><p>get和post
+1、get请求：
+使用场景：如果只对服务器获取数据，并没有对服务器产生任何影响，那么这时候使用get请求
+传参：get请求传参是放在url中，并且是通过？的形式来指定key和value的
+2、post请求：
+使用场景：如果要对服务器产生影响，那么使用post请求
+传参：post请求传参不是放在URL中，是通过form data 的形式发送给服务器的
+get 请求是通过flask.request.args来获取
+post请求是通过flask.request.form来获取
+post请求在模板中要注意几点:
+*input 标签中，要写name来表示这个value的key,方便后台获取
+*在写form表单的时候，要指定method=‘post’,并且要指定action='/login/'</p></blockquote> <ul><li><code>GET</code></li></ul> <p>对于前端，<code>axios.get()</code>就是从后端获取数据。</p> <p>对于后端，需要在路由中写入<code>methods=['GET']</code>，就表示前端从后端获取数据，一般不需要使用<code>request.method = 'GET'</code>来判断方法，只需要在函数中<code>return</code>数据即可。以下是示例：</p> <blockquote><p>前端部分：</p></blockquote> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      books<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token string">'http://localhost:5000/books'</span><span class="token punctuation">;</span>
+      axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>books <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>books<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// eslint-disable-next-line</span>
+          console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><blockquote><p>后端部分：</p></blockquote> <div class="language-python extra-class"><pre class="language-python"><code>BOOKS <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">'title'</span><span class="token punctuation">:</span> <span class="token string">'On the Road'</span><span class="token punctuation">,</span>
+        <span class="token string">'author'</span><span class="token punctuation">:</span> <span class="token string">'Jack Kerouac'</span><span class="token punctuation">,</span>
+        <span class="token string">'read'</span><span class="token punctuation">:</span> <span class="token boolean">True</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">'title'</span><span class="token punctuation">:</span> <span class="token string">'Harry Potter and the Philosopher\'s Stone'</span><span class="token punctuation">,</span>
+        <span class="token string">'author'</span><span class="token punctuation">:</span> <span class="token string">'J. K. Rowling'</span><span class="token punctuation">,</span>
+        <span class="token string">'read'</span><span class="token punctuation">:</span> <span class="token boolean">False</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">'title'</span><span class="token punctuation">:</span> <span class="token string">'Green Eggs and Ham'</span><span class="token punctuation">,</span>
+        <span class="token string">'author'</span><span class="token punctuation">:</span> <span class="token string">'Dr. Seuss'</span><span class="token punctuation">,</span>
+        <span class="token string">'read'</span><span class="token punctuation">:</span> <span class="token boolean">True</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/books'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">all_books</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string">'status'</span><span class="token punctuation">:</span> <span class="token string">'success'</span><span class="token punctuation">,</span>
+        <span class="token comment"># 这里的BOOKS是json数据，定义在python文件中，books是前端接收到的对象的key，BOOKS就是接收到的对象的value</span>
+        <span class="token string">'books'</span><span class="token punctuation">:</span> BOOKS
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li><code>POST</code></li></ul> <p>对于前端，<code>axios.post()</code>就是向后端发送数据。</p> <p>对于后端，需要在路由中写入<code>methods=['GET','POST']</code>，就表示前端向后端发送数据，要使用<code>request.method = 'POST'</code>来判断方法，并且在函数中<code>return</code>最新的数据。以下是示例：</p> <blockquote><p>前端部分：</p></blockquote> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      books<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      addBookForm<span class="token operator">:</span> <span class="token punctuation">{</span>
+        title<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+        author<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+        read<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 获取数据的方法</span>
+    <span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token string">'http://localhost:5000/books'</span><span class="token punctuation">;</span>
+      axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>books <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>books<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// eslint-disable-next-line</span>
+          console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      
+    <span class="token comment">// 添加数据的方法</span>
+    <span class="token function">addBook</span><span class="token punctuation">(</span><span class="token parameter">payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token string">'http://localhost:5000/books'</span><span class="token punctuation">;</span>
+      axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>    <span class="token comment">// 第一个参数是地址，第二个参数是数据</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 在添加数据之后，重新获取数据，达到更新数据的目的</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// eslint-disable-next-line</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      
+    <span class="token comment">// 初始化添加数据功能的表格为空</span>
+    <span class="token function">initForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>addBookForm<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>addBookForm<span class="token punctuation">.</span>author <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>addBookForm<span class="token punctuation">.</span>read <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      
+    <span class="token comment">// 这里是调用添加数据这个方法</span>
+    <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      evt<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>addBookModal<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> read <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>addBookForm<span class="token punctuation">.</span>read<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> read <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token punctuation">{</span>
+        title<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>addBookForm<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+        author<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>addBookForm<span class="token punctuation">.</span>author<span class="token punctuation">,</span>
+        read<span class="token punctuation">,</span> <span class="token comment">// property shorthand</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addBook</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      
+    <span class="token comment">// 重置按钮</span>
+    <span class="token function">onReset</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      evt<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>addBookModal<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><blockquote><p>后端部分：</p></blockquote> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> jsonify<span class="token punctuation">,</span> request
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/books'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">all_books</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    response_object <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'status'</span><span class="token punctuation">:</span> <span class="token string">'success'</span><span class="token punctuation">}</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+        post_data <span class="token operator">=</span> request<span class="token punctuation">.</span>get_json<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">#这里使用的是request的get_json()方法</span>
+        BOOKS<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token string">'title'</span><span class="token punctuation">:</span> post_data<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'author'</span><span class="token punctuation">:</span> post_data<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'author'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'read'</span><span class="token punctuation">:</span> post_data<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'read'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        response_object<span class="token punctuation">[</span><span class="token string">'message'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Book added!'</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        response_object<span class="token punctuation">[</span><span class="token string">'books'</span><span class="token punctuation">]</span> <span class="token operator">=</span> BOOKS
+    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>response_object<span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/17/2021, 1:44:22 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/" class="prev router-link-active">
+        Home
+      </a></span> <span class="next"><a href="/docs/python/python02.html">
+        Python进行数据处理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/docs/assets/js/app.b0a15833.js" defer></script><script src="/docs/assets/js/2.18927d2b.js" defer></script><script src="/docs/assets/js/9.c23fac6c.js" defer></script>
+  </body>
+</html>

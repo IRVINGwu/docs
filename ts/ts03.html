@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第三章 使用TypeScript改写部分接口 | covid-19-app 文档</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.52bb2005.css" as="style"><link rel="preload" href="/docs/assets/js/app.b0a15833.js" as="script"><link rel="preload" href="/docs/assets/js/2.18927d2b.js" as="script"><link rel="preload" href="/docs/assets/js/14.5123bec2.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.5c238dfe.js"><link rel="prefetch" href="/docs/assets/js/11.2da91d8e.js"><link rel="prefetch" href="/docs/assets/js/12.16979dbe.js"><link rel="prefetch" href="/docs/assets/js/13.7f94e9c0.js"><link rel="prefetch" href="/docs/assets/js/15.16ae75a4.js"><link rel="prefetch" href="/docs/assets/js/16.5a145cd8.js"><link rel="prefetch" href="/docs/assets/js/17.d9f7e318.js"><link rel="prefetch" href="/docs/assets/js/18.ae462d82.js"><link rel="prefetch" href="/docs/assets/js/3.9c229156.js"><link rel="prefetch" href="/docs/assets/js/4.e05c873c.js"><link rel="prefetch" href="/docs/assets/js/5.f3e6ed41.js"><link rel="prefetch" href="/docs/assets/js/6.498ab014.js"><link rel="prefetch" href="/docs/assets/js/7.3f5168c2.js"><link rel="prefetch" href="/docs/assets/js/8.4cd0f27c.js"><link rel="prefetch" href="/docs/assets/js/9.c23fac6c.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.52bb2005.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">covid-19-app 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/docs/python/" class="nav-link">
+  Python
+</a></div><div class="nav-item"><a href="/docs/vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/docs/ts/" class="nav-link router-link-active">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目地址啊" class="dropdown-title"><span class="title">项目地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="项目地址啊" class="mobile-dropdown-title"><span class="title">项目地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-project" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue2.x项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV3" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV2" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0+TypeScript项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/docs/python/" class="nav-link">
+  Python
+</a></div><div class="nav-item"><a href="/docs/vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/docs/ts/" class="nav-link router-link-active">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目地址啊" class="dropdown-title"><span class="title">项目地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="项目地址啊" class="mobile-dropdown-title"><span class="title">项目地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-project" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue2.x项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV3" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/IRVINGwu/flask-vue-projectV2" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  flask+Vue3.0+TypeScript项目
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/docs/" aria-current="page" class="sidebar-link">Home</a></li><li><a href="/docs/ts/ts01.html" class="sidebar-link">第一章 TypeScript简介</a></li><li><a href="/docs/ts/ts02.html" class="sidebar-link">第二章 Typescript</a></li><li><a href="/docs/ts/ts03.html" aria-current="page" class="active sidebar-link">第三章 使用TypeScript改写部分接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/ts/ts03.html#改写axios请求" class="sidebar-link">改写axios请求</a></li><li class="sidebar-sub-header"><a href="/docs/ts/ts03.html#改写新闻组件" class="sidebar-link">改写新闻组件</a></li><li class="sidebar-sub-header"><a href="/docs/ts/ts03.html#改写谣言组件" class="sidebar-link">改写谣言组件</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第三章-使用typescript改写部分接口"><a href="#第三章-使用typescript改写部分接口" class="header-anchor">#</a> 第三章 使用TypeScript改写部分接口</h1> <h2 id="改写axios请求"><a href="#改写axios请求" class="header-anchor">#</a> 改写axios请求</h2> <div class="language-tsx extra-class"><pre class="language-tsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+
+<span class="token comment">// 添加一个参数作为要使用的 地址</span>
+<span class="token keyword">function</span> <span class="token generic-function"><span class="token function">useURLLoader</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>url<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment">// 声明几个ref，代表不同的状态和结果</span>
+  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token generic-function"><span class="token function">ref</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token operator">|</span> <span class="token keyword">null</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> loading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> loaded <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> error <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 发送异步请求，获得data</span>
+<span class="token comment">// 由于 axios 都有定义，所以rawData 可以轻松知道其类型</span>
+  axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">rawData</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+    loaded<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+    result<span class="token punctuation">.</span>value <span class="token operator">=</span> rawData<span class="token punctuation">.</span>data
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    error<span class="token punctuation">.</span>value <span class="token operator">=</span> e
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment">// 将这些ref 一一返回</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    result<span class="token punctuation">,</span>
+    loading<span class="token punctuation">,</span>
+    error<span class="token punctuation">,</span>
+    loaded
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span>useURLLoader<span class="token punctuation">}</span>
+</code></pre></div><p>这样就可以在应用中使用，可以定义不同的数据类型，定义不同的接口。</p> <h2 id="改写新闻组件"><a href="#改写新闻组件" class="header-anchor">#</a> 改写新闻组件</h2> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ts<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>useURLLoader<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/services/urlLoader&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">NewsResult</span><span class="token punctuation">{</span>
+  content<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  date<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
+  id<span class="token operator">:</span> number<span class="token punctuation">;</span>
+  link<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  source<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
+  time<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  title<span class="token operator">:</span> string<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">&quot;News&quot;</span><span class="token punctuation">,</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>result<span class="token punctuation">,</span> loading<span class="token punctuation">,</span> loaded<span class="token punctuation">}</span> <span class="token operator">=</span> useURLLoader<span class="token operator">&lt;</span>NewsResult<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8080/api/news'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      result<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="改写谣言组件"><a href="#改写谣言组件" class="header-anchor">#</a> 改写谣言组件</h2> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ts<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>useURLLoader<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/services/urlLoader&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">RumorsResult</span><span class="token punctuation">{</span>
+  content<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  id<span class="token operator">:</span> number<span class="token punctuation">;</span>
+  source<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  title<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  truth<span class="token operator">:</span> string<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">&quot;News&quot;</span><span class="token punctuation">,</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>result<span class="token punctuation">,</span> loading<span class="token punctuation">,</span> loaded<span class="token punctuation">}</span> <span class="token operator">=</span> useURLLoader<span class="token operator">&lt;</span>RumorsResult<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8080/api/rumors'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      result<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/17/2021, 1:44:22 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/ts/ts02.html" class="prev">
+        第二章 Typescript
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/docs/assets/js/app.b0a15833.js" defer></script><script src="/docs/assets/js/2.18927d2b.js" defer></script><script src="/docs/assets/js/14.5123bec2.js" defer></script>
+  </body>
+</html>
